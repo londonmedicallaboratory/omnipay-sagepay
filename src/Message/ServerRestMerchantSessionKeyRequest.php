@@ -20,6 +20,8 @@ class ServerRestMerchantSessionKeyRequest extends AbstractRestRequest
     public function getData()
     {
         $data['vendorName'] = $this->getVendor();
+        $data['username'] = $this->getUsername();
+        $data['password'] = $this->getPassword();
 
         return $data;
     }
