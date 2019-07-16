@@ -2,14 +2,7 @@
 
 namespace Omnipay\SagePay;
 
-// CHECKME: do we really need these?
-use Omnipay\SagePay\Message\ServerAuthorizeRequest;
-use Omnipay\SagePay\Message\ServerCompleteAuthorizeRequest;
-use Omnipay\SagePay\Message\ServerPurchaseRequest;
-use Omnipay\SagePay\Message\ServerNotifyRequest;
-use Omnipay\SagePay\Message\SharedTokenRemovalRequest;
-use Omnipay\SagePay\Message\ServerTokenRegistrationRequest;
-use Omnipay\SagePay\Message\ServerTokenRegistrationCompleteRequest;
+use Omnipay\SagePay\Message\ServerRestMerchantSessionKeyRequest;
 
 /**
  * Sage Pay Rest Server Gateway
