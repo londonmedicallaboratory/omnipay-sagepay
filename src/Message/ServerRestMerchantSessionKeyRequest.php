@@ -5,7 +5,7 @@ namespace Omnipay\SagePay\Message;
 /**
  * Sage Pay REST Server Merchant Session Key Request
  */
-class ServerRestMerchantSessionKeyRequest extends DirectAuthorizeRequest
+class ServerRestMerchantSessionKeyRequest extends AbstractRestRequest
 {
     public function getService()
     {
