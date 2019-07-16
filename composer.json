@@ -1,5 +1,5 @@
 {
-    "name": "omnipay/bsagepay",
+    "name": "omnipay/sagepay",
     "type": "library",
     "description": "Sage Pay driver for the Omnipay PHP payment processing library",
     "keywords": [
@@ -32,9 +32,6 @@
         "psr-4": {
             "Omnipay\\SagePay\\" : "src/"
         }
-    },
-    "replace": {
-        "omnipay/sagepay":"dev-master"
     },
     "require": {
         "php": "^5.6|^7",
