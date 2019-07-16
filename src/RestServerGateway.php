@@ -13,6 +13,26 @@ class RestServerGateway extends ServerGateway
     {
         return 'Sage Pay REST Server';
     }
+    
+    public function getUsername()
+    {
+        return $this->getParameter('username');
+    }
+
+    public function setUsername($value)
+    {
+        return $this->setParameter('username', $value);
+    }
+
+    public function getPassword()
+    {
+        return $this->getParameter('password');
+    }
+
+    public function setPassword($value)
+    {
+        return $this->setParameter('password', $value);
+    }
 
     /**
      * Create merchant session key (MSK).
