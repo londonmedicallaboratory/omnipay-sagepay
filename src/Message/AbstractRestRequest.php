@@ -60,7 +60,7 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
     {
         return $this->getParameter('username');
     }
-    
+
     public function setUsername($value)
     {
         return $this->setParameter('username', $value);
@@ -102,7 +102,7 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
                     'Content-Type' => 'application/json',
                     'Authorization' => 'Basic '.base64_encode($this->getUsername() . ':' . $this->getPassword()),
                 ],
-                http_build_query($data)
+                json_encode($data)
             );
 
         // We might want to check $httpResponse->getStatusCode()
