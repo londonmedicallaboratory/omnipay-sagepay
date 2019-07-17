@@ -111,4 +111,19 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
 
         return $this->createResponse($responseData);
     }
+
+    /**
+     * The payload consists of json.
+     *
+     * @param ResponseInterface $httpResponse
+     * @return array
+     */
+    public static function parseBodyData(ResponseInterface $httpResponse)
+    {
+        $bodyText = (string)$httpResponse->getBody();
+
+        $responseData = json_decode($bodyText, true);
+
+        return $responseData;
+    }
 }
