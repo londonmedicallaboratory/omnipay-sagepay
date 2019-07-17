@@ -55,6 +55,9 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         $data['billingAddress']['city'] = 'abc';
         $data['billingAddress']['postalCode'] = 'EC1V 4AB';
         $data['billingAddress']['country'] = 'GB';
+        $data['paymentMethod']['card']['merchantSessionKey'] = '5493A29C-125F-49E9-B21A-FA775F5BDCD3';
+        $data['paymentMethod']['card']['cardIdentifier'] = '93F3618E-5B6B-4ABC-8D8E-49A2DB40E138';
+ },
 
         // $data = $this->getBillingAddressData($data);
 
