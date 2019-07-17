@@ -3,13 +3,13 @@
 namespace Omnipay\SagePay\Message;
 
 /**
- * Sage Pay REST Server Merchant Session Key Request
+ * Sage Pay REST Server Purchase Request
  */
-class ServerRestMerchantSessionKeyRequest extends AbstractRestRequest
+class ServerRestPurchaseRequest extends AbstractRestRequest
 {
     public function getService()
     {
-        return static::SERVICE_REST_MSK;
+        return static::SERVICE_REST_PURCHASE;
     }
 
     /**
@@ -19,10 +19,21 @@ class ServerRestMerchantSessionKeyRequest extends AbstractRestRequest
      */
     public function getData()
     {
-        $data['vendorName'] = $this->getVendor();
-        $data['username'] = $this->getUsername();
-        $data['password'] = $this->getPassword();
+        $data = $this->getBasePurchaseData();
 
+        return $data;
+    }
+
+
+    /**
+     * The required fields concerning the purchase
+     *
+     * @return array
+     */
+    protected function getBasePurchaseData()
+    {
+        $data = $this->getBaseData();
+        // user parent data here and the abstract can provide txtype vendor etc
         return $data;
     }
 

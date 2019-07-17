@@ -41,4 +41,12 @@ class RestServerGateway extends ServerGateway
     {
         return $this->createRequest(ServerRestMerchantSessionKeyRequest::class, $parameters);
     }
+
+    /**
+     * Purchase and handling of return from 3D Secure redirection.
+     */
+    public function purchase(array $parameters = array())
+    {
+        return $this->createRequest(ServerRestPurchaseRequest::class, $parameters);
+    }
 }
