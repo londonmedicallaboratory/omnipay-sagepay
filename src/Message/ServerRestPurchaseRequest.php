@@ -52,9 +52,9 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         $data['currency'] = $this->getCurrency();
         $data['customerFirstName'] = 'Test';
         $data['customerLastName'] = 'Test';
-        $data['billingAddress']['address1'] = 'abc';
+        $data['billingAddress']['address1'] = '88 abc';
         $data['billingAddress']['city'] = 'abc';
-        $data['billingAddress']['postalCode'] = 'EC1V 4AB';
+        $data['billingAddress']['postalCode'] = '412';
         $data['billingAddress']['country'] = 'GB';
 
 
