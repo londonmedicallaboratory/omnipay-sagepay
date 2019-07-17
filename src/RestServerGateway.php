@@ -3,6 +3,7 @@
 namespace Omnipay\SagePay;
 
 use Omnipay\SagePay\Message\ServerRestMerchantSessionKeyRequest;
+use Omnipay\SagePay\Message\ServerRestPurchaseRequest;
 
 /**
  * Sage Pay Rest Server Gateway

@@ -24,7 +24,6 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         return $data;
     }
 
-
     /**
      * The required fields concerning the purchase
      *
