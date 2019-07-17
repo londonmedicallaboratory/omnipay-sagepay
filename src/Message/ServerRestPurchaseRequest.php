@@ -2,6 +2,8 @@
 
 namespace Omnipay\SagePay\Message;
 
+use Omnipay\SagePay\Message\ServerRestPurchaseResponse;
+
 /**
  * Sage Pay REST Server Purchase Request
  */
@@ -74,6 +76,6 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
      */
     protected function createResponse($data)
     {
-        return $this->response = new ServerRestPurchaseKeyResponse($this, $data);
+        return $this->response = new ServerRestPurchaseResponse($this, $data);
     }
 }
