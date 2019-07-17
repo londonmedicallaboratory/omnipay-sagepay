@@ -52,11 +52,11 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         $data['amount'] = $this->getAmount();
         $data['currency'] = $this->getCurrency();
 
-        $data = $this->getBillingAddressData($data);
+        // $data = $this->getBillingAddressData($data);
 
         // Shipping details
 
-        $data = $this->getDeliveryAddressData($data);
+        // $data = $this->getDeliveryAddressData($data);
 
         // $card = $this->getCard();
 
