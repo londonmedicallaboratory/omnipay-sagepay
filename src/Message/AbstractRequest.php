@@ -648,14 +648,4 @@ abstract class AbstractRequest extends OmnipayAbstractRequest implements Constan
 
         return parent::setTransactionReference($value);
     }
-
-    public function getUsername()
-    {
-        return $this->getParameter('username');
-    }
-
-    public function getPassword()
-    {
-        return $this->getParameter('password');
-    }
 }

@@ -55,6 +55,26 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
         return $this->apiVersion;
     }
 
+    
+    public function getUsername()
+    {
+        return $this->getParameter('username');
+    }
+
+    public function setUsername($value)
+    {
+        return $this->setParameter('username', $value);
+    }
+
+    public function getPassword()
+    {
+        return $this->getParameter('password');
+    }
+
+    public function setPassword($value)
+    {
+        return $this->setParameter('password', $value);
+    }
 
     /**
      * Send data to the remote gateway, parse the result into an array,
@@ -87,7 +107,8 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
 
         // We might want to check $httpResponse->getStatusCode()
 
-        $responseData = static::parseBodyData($httpResponse);
+        $responseData = json_decode($httpResponse, true);
+        // $responseData = static::parseBodyData($httpResponse);
 
         return $this->createResponse($responseData);
     }
