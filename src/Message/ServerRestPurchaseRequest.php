@@ -11,6 +11,14 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
     {
         return static::SERVICE_REST_PURCHASE;
     }
+    
+    /**
+     * @return string the transaction type
+     */
+    public function getTxType()
+    {
+        return static::TXTYPE_PAYMENT;
+    }
 
     /**
      * Add the optional token details to the base data.
