@@ -2,8 +2,6 @@
 
 namespace Omnipay\SagePay\Message;
 
-use Omnipay\SagePay\Message\ServerRestPurchaseResponse;
-
 /**
  * Sage Pay REST Server Purchase Request
  */
