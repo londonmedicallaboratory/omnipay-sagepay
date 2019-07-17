@@ -70,10 +70,10 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
 
     /**
      * @param array $data
-     * @return ServerRestMerchantSessionKeyResponse
+     * @return ServerRestPurchaseKeyResponse
      */
     protected function createResponse($data)
     {
-        return $this->response = new ServerRestMerchantSessionKeyResponse($this, $data);
+        return $this->response = new ServerRestPurchaseKeyResponse($this, $data);
     }
 }
