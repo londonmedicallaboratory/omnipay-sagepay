@@ -29,6 +29,7 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
     {
         $data = $this->getBasePurchaseData();
 
+
         return $data;
     }
 
@@ -40,6 +41,29 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
     protected function getBasePurchaseData()
     {
         $data = $this->getBaseData();
+
+        $data['transactionType'] = $this->getTxType();
+        $data['vendorTxCode'] = $this->getTransactionId();
+        
+        $data['description'] = $this->getDescription();
+
+        $data['amount'] = $this->getAmount();
+        $data['currency'] = $this->getCurrency();
+
+        $data = $this->getBillingAddressData($data);
+
+        // Shipping details
+
+        $data = $this->getDeliveryAddressData($data);
+
+        // $card = $this->getCard();
+
+        // if ($card->getEmail()) {
+        //     $data['CustomerEMail'] = $card->getEmail();
+        // }
+
+        // $data['ApplyAVSCV2'] = $this->getApplyAVSCV2() ?: static::APPLY_AVSCV2_DEFAULT;
+        // $data['apply3DSecure'] = $this->getApply3DSecure() ?: static::APPLY_3DSECURE_APPLY;
         // user parent data here and the abstract can provide txtype vendor etc
         return $data;
     }
