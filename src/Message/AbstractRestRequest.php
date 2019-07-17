@@ -29,7 +29,7 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
      * @var string Endpoint base URLs.
      */
     protected $liveEndpoint = 'https://pi-test.sagepay.com/api';
-    protected $testEndpoint = 'https://www.inlec.com';
+    protected $testEndpoint = 'https://pi-test.sagepay.com/api';
 
 
     /**
@@ -60,7 +60,7 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
     {
         return $this->getParameter('username');
     }
-
+    
     public function setUsername($value)
     {
         return $this->setParameter('username', $value);
@@ -107,7 +107,6 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
 
         // We might want to check $httpResponse->getStatusCode()
 
-        // $responseData = json_decode($httpResponse, true);
         $responseData = static::parseBodyData($httpResponse);
 
         return $this->createResponse($responseData);
