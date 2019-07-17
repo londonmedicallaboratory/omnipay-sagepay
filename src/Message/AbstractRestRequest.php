@@ -107,8 +107,8 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
 
         // We might want to check $httpResponse->getStatusCode()
 
-        $responseData = json_decode($httpResponse, true);
-        // $responseData = static::parseBodyData($httpResponse);
+        // $responseData = json_decode($httpResponse, true);
+        $responseData = static::parseBodyData($httpResponse);
 
         return $this->createResponse($responseData);
     }
