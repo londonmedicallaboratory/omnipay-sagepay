@@ -47,7 +47,7 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         
         $data['description'] = $this->getDescription();
 
-        $data['amount'] = $this->getAmount();
+        $data['amount'] = (int) $this->getAmount() * 100;
         $data['currency'] = $this->getCurrency();
 
         // $data = $this->getBillingAddressData($data);
