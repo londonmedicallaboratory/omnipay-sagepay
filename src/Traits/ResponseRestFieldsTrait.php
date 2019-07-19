@@ -62,7 +62,7 @@ trait ResponseRestFieldsTrait
      */
     public function getStatus()
     {
-        return $this->getDataItem('status');
+        return strtoupper($this->getDataItem('status'));
     }
 
     /**
