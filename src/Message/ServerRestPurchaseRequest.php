@@ -100,14 +100,4 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         $data['paymentMethod']['card']['cardIdentifier'] = $this->getCardIdentifier();
         return $data;
     }
-
-    public function getMerchantSessionKey()
-    {
-        return $this->getParameter('merchantSessionKey');
-    }
-
-    public function getCardIdentifier()
-    {
-        return $this->getParameter('cardIdentifier');
-    }
 }

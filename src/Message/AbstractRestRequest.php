@@ -76,6 +76,26 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
         return $this->setParameter('password', $value);
     }
 
+    public function getMerchantSessionKey()
+    {
+        return $this->getParameter('merchantSessionKey');
+    }
+
+    public function getCardIdentifier()
+    {
+        return $this->getParameter('cardIdentifier');
+    }
+
+    public function setMerchantSessionKey($value)
+    {
+        return $this->setParameter('merchantSessionKey', $value);
+    }
+
+    public function setCardIdentifier($value)
+    {
+        return $this->setParameter('cardIdentifier', $value);
+    }
+
     /**
      * Send data to the remote gateway, parse the result into an array,
      * then use that to instantiate the response object.
