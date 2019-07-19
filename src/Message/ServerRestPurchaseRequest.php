@@ -103,11 +103,11 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
 
     public function getMerchantSessionKey()
     {
-        return $this->getDataItem('merchantSessionKey');
+        return $this->getParameter('merchantSessionKey');
     }
 
     public function getCardIdentifier()
     {
-        return $this->getDataItem('cardIdentifier');
+        return $this->getParameter('cardIdentifier');
     }
 }
