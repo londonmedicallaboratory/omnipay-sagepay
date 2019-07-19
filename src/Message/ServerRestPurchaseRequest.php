@@ -28,8 +28,10 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
     public function getData()
     {
         $data = $this->getBasePurchaseData();
-        $data['paymentMethod'] = $this->getParameter('paymentMethod');
 
+        if ($this->getCardIdentifier() && $this->getMerchantSessionKey()) {
+            $data = $this->getPaymentMethodData($data);
+        }
 
         return $data;
     }
@@ -56,6 +58,8 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         $data['billingAddress']['city'] = 'abc';
         $data['billingAddress']['postalCode'] = '412';
         $data['billingAddress']['country'] = 'GB';
+        $data['NotificationURL'] = $this->getNotifyUrl() ?: $this->getReturnUrl();
+
 
 
         // $data = $this->getBillingAddressData($data);
@@ -83,5 +87,27 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
     protected function createResponse($data)
     {
         return $this->response = new ServerRestPurchaseResponse($this, $data);
+    }
+
+    /**
+     * A card token is returned if one has been requested.
+     *
+     * @return string Currently an md5 format token.
+     */
+    public function getPaymentMethodData($data = [])
+    {
+        $data['paymentMethod']['card']['merchantSessionKey'] = $this->getMerchantSessionKey();
+        $data['paymentMethod']['card']['cardIdentifier'] = $this->getCardIdentifier();
+        return $data;
+    }
+
+    public function getMerchantSessionKey()
+    {
+        return $this->getDataItem('merchantSessionKey');
+    }
+
+    public function getCardIdentifier()
+    {
+        return $this->getDataItem('cardIdentifier');
     }
 }
