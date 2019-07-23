@@ -50,4 +50,12 @@ class RestServerGateway extends ServerGateway
     {
         return $this->createRequest(ServerRestPurchaseRequest::class, $parameters);
     }
+
+    /**
+     * Handle purchase notifcation callback.
+     */
+    public function complete(array $parameters = array())
+    {
+        return $this->createRequest(ServerRestCompletePurchaseRequest::class, $parameters);
+    }
 }

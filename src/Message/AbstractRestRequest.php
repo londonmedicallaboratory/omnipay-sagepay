@@ -46,6 +46,47 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
     }
 
     /**
+     * The name of the service used in the endpoint to send the message.
+     * With override for services used on specific parent services
+     *
+     * @return string Sage Pay endpoint service name.
+     */
+    public function getService()
+    {
+        $service = parent::getService();
+
+        if ($this->getParentService()) {
+            return sprintf(
+                '%s/%s/%s',
+                $this->getParentService(),
+                $this->getParentServiceReference(),
+                $service
+            );
+        }
+        return $service;
+    }
+
+    public function getParentService()
+    {
+        return $this->getParameter('parentService');
+    }
+
+    public function getParentServiceReference()
+    {
+        return $this->getParameter('parentServiceReference');
+    }
+
+    public function setParentService()
+    {
+        return $this->setParameter('parentService', $value);
+    }
+
+    public function setParentServiceReference()
+    {
+        return $this->setParameter('parentServiceReference', $value);
+    }
+
+    /**
      * Gets the api version for the end point.
      *
      * @return string
