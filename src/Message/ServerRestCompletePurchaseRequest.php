@@ -19,13 +19,16 @@ class ServerRestCompletePurchaseRequest extends AbstractRestRequest
         return static::SERVICE_REST_PURCHASE;
     }
 
+    public function getParentServiceReference()
+    {
+        return $this->getMd() ?: $this->httpRequest->request->get('MD');
+    }
+
     public function getData()
     {
 
         $data = array(
             'MD' => $this->getMd() ?: $this->httpRequest->request->get('MD'),
-            'parentServiceReference' => $this->getMd() ?: $this->httpRequest->request->get('MD'),
-            'parentService' => $this->getParentService(),
             'paRes' => $this->getPaRes() ?: $this->httpRequest->request->get('PaRes'),
         );
 

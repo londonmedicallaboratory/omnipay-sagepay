@@ -76,16 +76,6 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
         return $this->getParameter('parentServiceReference');
     }
 
-    public function setParentService()
-    {
-        return $this->setParameter('parentService', $value);
-    }
-
-    public function setParentServiceReference()
-    {
-        return $this->setParameter('parentServiceReference', $value);
-    }
-
     /**
      * Gets the api version for the end point.
      *
