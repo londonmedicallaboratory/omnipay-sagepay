@@ -68,12 +68,12 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
 
     public function getParentService()
     {
-        return $this->getParameter('parentService');
+        return false;
     }
 
     public function getParentServiceReference()
     {
-        return $this->getParameter('parentServiceReference');
+        return false;
     }
 
     /**
