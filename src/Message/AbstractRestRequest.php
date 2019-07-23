@@ -41,8 +41,13 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
             '%s/%s/%s',
             $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint,
             $this->getApiVersion(),
-            $this->getService()
+            $this->isSubservice() ? $this->getSubService() : $this->getService()
         );
+    }
+
+    public function isSubservice()
+    {
+        return !empty($this->getParentService());
     }
 
     /**
@@ -51,19 +56,17 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
      *
      * @return string Sage Pay endpoint service name.
      */
-    public function getService()
+    public function getSubService()
     {
-        $service = parent::getService();
-
-        if ($this->getParentService()) {
+        if ($this->isSubservice()) {
             return sprintf(
                 '%s/%s/%s',
                 $this->getParentService(),
                 $this->getParentServiceReference(),
-                $service
+                $this->getService()
             );
         }
-        return $service;
+        return $this->getService();
     }
 
     public function getParentService()
