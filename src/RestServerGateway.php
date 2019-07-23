@@ -2,6 +2,7 @@
 
 namespace Omnipay\SagePay;
 
+use Omnipay\SagePay\Message\ServerRestCompletePurchaseRequest;
 use Omnipay\SagePay\Message\ServerRestMerchantSessionKeyRequest;
 use Omnipay\SagePay\Message\ServerRestPurchaseRequest;
 
