@@ -5,6 +5,7 @@ namespace Omnipay\SagePay;
 use Omnipay\SagePay\Message\ServerRestCompletePurchaseRequest;
 use Omnipay\SagePay\Message\ServerRestMerchantSessionKeyRequest;
 use Omnipay\SagePay\Message\ServerRestPurchaseRequest;
+use Omnipay\SagePay\Message\ServerRestRetrieveTransactionRequest;
 
 /**
  * Sage Pay Rest Server Gateway
@@ -58,5 +59,13 @@ class RestServerGateway extends ServerGateway
     public function complete(array $parameters = array())
     {
         return $this->createRequest(ServerRestCompletePurchaseRequest::class, $parameters);
+    }
+
+    /**
+     * Get transaction information from Sage.
+     */
+    public function getTransaction(array $parameters = array())
+    {
+        return $this->createRequest(ServerRestRetrieveTransactionRequest::class, $parameters);
     }
 }

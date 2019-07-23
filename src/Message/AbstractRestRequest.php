@@ -25,12 +25,18 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
      */
     protected $apiVersion = 'v1';
 
+    protected $method = 'POST';
+
     /**
      * @var string Endpoint base URLs.
      */
     protected $liveEndpoint = 'https://pi-test.sagepay.com/api';
     protected $testEndpoint = 'https://pi-test.sagepay.com/api';
 
+    public function getMethod()
+    {
+        return $this->method;
+    }
 
     /**
      * @return string URL for the test or live gateway, as appropriate.
@@ -150,7 +156,7 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
         $httpResponse = $this
             ->httpClient
             ->request(
-                'POST',
+                $this->getMethod(),
                 $this->getEndpoint(),
                 [
                     'Content-Type' => 'application/json',
