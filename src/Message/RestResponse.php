@@ -98,8 +98,8 @@ class RestResponse extends AbstractResponse implements RedirectResponseInterface
         if ($this->isRedirect()) {
             return array(
                 'PaReq' => $this->getDataItem('paReq'),
-                'TermUrl' => $this->getRequest()->getReturnUrl() .'?ben=override',
-                'MD' => $this->getRequest()->getMd() ?? 'its still missing',
+                'TermUrl' => $this->getRequest()->getReturnUrl(),
+                'MD' => $this->getRequest()->getMd(),
             );
         }
     }
