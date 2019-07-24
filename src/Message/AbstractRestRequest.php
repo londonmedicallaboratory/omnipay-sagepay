@@ -137,6 +137,25 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
     }
 
     /**
+     * @return string
+     */
+    public function getMd()
+    {
+        return $this->getParameter('MD');
+    }
+
+    /**
+     * Override the MD passed into the current request.
+     *
+     * @param string $value
+     * @return $this
+     */
+    public function setMd($value)
+    {
+        return $this->setParameter('MD', $value);
+    }
+
+    /**
      * Send data to the remote gateway, parse the result into an array,
      * then use that to instantiate the response object.
      *
