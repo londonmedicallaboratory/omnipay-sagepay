@@ -21,7 +21,7 @@ class ServerRestCompletePurchaseRequest extends AbstractRestRequest
 
     public function getParentServiceReference()
     {
-        return $this->getMd() ?: $this->httpRequest->request->get('MD');
+        return $this->getParameter('transactionId');
     }
 
     public function getData()
