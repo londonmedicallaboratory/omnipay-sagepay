@@ -139,7 +139,7 @@ trait ResponseRestFieldsTrait
      */
     public function getAVSCV2()
     {
-        return $this->getAvsCvcCheck();
+        return strtoupper($this->getAvsCvcCheck());
     }
 
     /**
@@ -150,7 +150,7 @@ trait ResponseRestFieldsTrait
      */
     public function getAddressResult()
     {
-        return $this->getAvsCvcCheck(false)->address;
+        return strtoupper($this->getAvsCvcCheck(false)->address);
     }
 
     /**
@@ -161,7 +161,7 @@ trait ResponseRestFieldsTrait
      */
     public function getPostCodeResult()
     {
-        return $this->getAvsCvcCheck(false)->postalCode;
+        return strtoupper($this->getAvsCvcCheck(false)->postalCode);
     }
 
     /**
@@ -172,7 +172,7 @@ trait ResponseRestFieldsTrait
      */
     public function getCV2Result()
     {
-        return $this->getAvsCvcCheck(false)->securityCode;
+        return strtoupper($this->getAvsCvcCheck(false)->securityCode);
     }
 
     /**
@@ -183,7 +183,13 @@ trait ResponseRestFieldsTrait
      */
     public function get3DSecureStatus()
     {
-        return $this->getDataItem('3DSecureStatus');
+        $secure3DResponse = $this->getDataItem('3DSecure');
+
+        if (array_key_exists('status', $secure3DResponse)) {
+            return $secure3DResponse['status'];
+        }
+        
+        return $secure3DResponse;
     }
 
     /**
