@@ -93,9 +93,19 @@ trait ResponseRestFieldsTrait
      */
     public function getTxAuthNo()
     {
-        return $this->getDataItem('TxAuthNo');
+        return $this->getRetrievalReference();
     }
 
+    /**
+     * Sage Pay unique Authorisation Code for a successfully authorised transaction.
+     * Only present if Status is OK
+     *
+     * @return string
+     */
+    public function getRetrievalReference()
+    {
+        return $this->getDataItem('retrievalReference');
+    }
     /**
      * This is the response from AVS and CV2 checks.
      * Provided for Vendor info and backward compatibility with the
