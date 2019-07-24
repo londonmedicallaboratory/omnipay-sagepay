@@ -59,6 +59,7 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         $data['billingAddress']['postalCode'] = '412';
         $data['billingAddress']['country'] = 'GB';
         $data['NotificationURL'] = $this->getNotifyUrl() ?: $this->getReturnUrl();
+        $data['MD'] = $this->getMd();
 
 
 
