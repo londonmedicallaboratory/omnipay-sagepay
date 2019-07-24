@@ -106,6 +106,23 @@ trait ResponseRestFieldsTrait
     {
         return $this->getDataItem('retrievalReference');
     }
+
+    /**
+     * Sage Pay unique Authorisation Code for a successfully authorised transaction.
+     * Only present if Status is OK
+     *
+     * @return array
+     */
+    public function getAvsCvcCheck($wholeStatus = true)
+    {
+        $avsCvcCheck = $this->getDataItem('avsCvcCheck');
+
+        if (array_key_exists('status', $avsCvcCheck) && $wholeStatus) {
+            return $avsCvcCheck['status'];
+        }
+        return (object) $avsCvcCheck;
+    }
+    
     /**
      * This is the response from AVS and CV2 checks.
      * Provided for Vendor info and backward compatibility with the
@@ -122,7 +139,7 @@ trait ResponseRestFieldsTrait
      */
     public function getAVSCV2()
     {
-        return $this->getDataItem('AVSCV2');
+        return $this->getAvsCvcCheck();
     }
 
     /**
@@ -133,7 +150,7 @@ trait ResponseRestFieldsTrait
      */
     public function getAddressResult()
     {
-        return $this->getDataItem('AddressResult');
+        return $this->getAvsCvcCheck(false)->address;
     }
 
     /**
@@ -144,7 +161,7 @@ trait ResponseRestFieldsTrait
      */
     public function getPostCodeResult()
     {
-        return $this->getDataItem('PostCodeResult');
+        return $this->getAvsCvcCheck(false)->postalCode;
     }
 
     /**
@@ -155,7 +172,7 @@ trait ResponseRestFieldsTrait
      */
     public function getCV2Result()
     {
-        return $this->getDataItem('CV2Result');
+        return $this->getAvsCvcCheck(false)->securityCode;
     }
 
     /**
