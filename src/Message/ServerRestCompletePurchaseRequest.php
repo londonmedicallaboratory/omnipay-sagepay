@@ -44,7 +44,7 @@ class ServerRestCompletePurchaseRequest extends AbstractRestRequest
      */
     public function getMd()
     {
-        return $this->getParameter('md');
+        return $this->getParameter('MD');
     }
 
     /**
@@ -55,7 +55,7 @@ class ServerRestCompletePurchaseRequest extends AbstractRestRequest
      */
     public function setMd($value)
     {
-        return $this->setParameter('md', $value);
+        return $this->setParameter('MD', $value);
     }
 
     /**
