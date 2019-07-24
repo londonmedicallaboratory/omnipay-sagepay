@@ -186,9 +186,9 @@ trait ResponseRestFieldsTrait
         $secure3DResponse = $this->getDataItem('3DSecure');
 
         if (array_key_exists('status', $secure3DResponse)) {
-            return $secure3DResponse['status'];
+            return strtoupper($secure3DResponse['status']);
         }
-        
+
         return $secure3DResponse;
     }
 
