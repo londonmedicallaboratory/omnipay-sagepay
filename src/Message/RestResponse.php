@@ -18,44 +18,13 @@ class RestResponse extends AbstractResponse implements RedirectResponseInterface
     /**
      * Gateway Reference
      *
-     * Sage Pay requires the original VendorTxCode as well as 3 separate
-     * fields from the response object to capture or refund transactions at a later date.
+     * Rest API - use just transactionId
      *
-     * Active Merchant solves this dilemma by returning the gateway reference in the following
-     * format: VendorTxCode;VPSTxId;TxAuthNo;SecurityKey
-     *
-     * We have opted to return this reference as JSON, as the keys are much more explicit.
-     *
-     * @return string|null JSON formatted data.
+     * @return string.
      */
     public function getTransactionReference()
     {
-        $reference = [];
-
-        foreach (['SecurityKey', 'TxAuthNo', 'VPSTxId', 'VendorTxCode'] as $key) {
-            $value = $this->getDataItem($key);
-
-            if ($value !== null) {
-                $reference[$key] = $value;
-            }
-        }
-
-        // The reference is null if we have no transaction details.
-
-        if (empty($reference)) {
-            return;
-        }
-
-        // Remaining transaction details supplied by the merchant site
-        // if not already in the response (it will be for Sage Pay Form).
-
-        if (! array_key_exists('VendorTxCode', $reference)) {
-            $reference['VendorTxCode'] = $this->getTransactionId();
-        }
-
-        ksort($reference);
-
-        return json_encode($reference);
+        return $this->getDataItem('transactionId');
     }
 
     /**
