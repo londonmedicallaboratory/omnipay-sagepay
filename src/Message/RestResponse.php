@@ -99,7 +99,7 @@ class RestResponse extends AbstractResponse implements RedirectResponseInterface
             return array(
                 'PaReq' => $this->getDataItem('paReq'),
                 'TermUrl' => $this->getRequest()->getReturnUrl(),
-                'MD' => $this->getDataItem('MD'),
+                'MD' => $this->getRequest()->getMd(),
             );
         }
     }
