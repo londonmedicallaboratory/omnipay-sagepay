@@ -310,4 +310,36 @@ trait ResponseRestFieldsTrait
         return $this->getDataItem('VendorTxCode')
             ?: $this->getRequest()->getTransactionId();
     }
+
+    
+    /**
+     * Confirm (Sage Pay Server only)
+     *
+     * Notify Sage Pay you received the payment details and wish to confirm the payment, and
+     * provide a URL to forward the customer to.
+     *
+     * @param string URL to forward the customer to. Note this is different to your standard
+     *               return controller action URL.
+     * @param string Optional human readable reasons for accepting the transaction.
+     */
+    public function confirm($nextUrl, $detail = null)
+    {
+        $this->sendResponse('OK', $nextUrl, $detail);
+    }
+
+    /**
+     * Error (Sage Pay Server only)
+     *
+     * Notify Sage Pay you received the payment details but there was an error and the payment
+     * cannot be completed. Error should be called rarely, and only when something unforseen
+     * has happened on your server or database.
+     *
+     * @param string URL to foward the customer to. Note this is different to your standard
+     *               return controller action URL.
+     * @param string Optional human readable reasons for not accepting the transaction.
+     */
+    public function error($nextUrl, $detail = null)
+    {
+        $this->sendResponse('ERROR', $nextUrl, $detail);
+    }
 }
