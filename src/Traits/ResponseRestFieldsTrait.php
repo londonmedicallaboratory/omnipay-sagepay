@@ -311,7 +311,7 @@ trait ResponseRestFieldsTrait
             ?: $this->getRequest()->getTransactionId();
     }
 
-    
+
     /**
      * Confirm (Sage Pay Server only)
      *
@@ -341,5 +341,37 @@ trait ResponseRestFieldsTrait
     public function error($nextUrl, $detail = null)
     {
         $this->sendResponse('ERROR', $nextUrl, $detail);
+    }
+    
+    /**
+     * Respond to SagePay confirming or rejecting the payment.
+     *
+     * Sage Pay Server does things backwards compared to every other gateway (including Sage Pay
+     * Direct). The return URL is called by their server, and they expect you to confirm receipt
+     * and then pass a URL for them to forward the customer to.
+     *
+     * Because of this, an extra step is required. In your return controller, after calling
+     * $gateway->completePurchase(), you should attempt to process the payment. You must then call
+     * either $response->confirm(), $response->error() or $response->invalid() to notify Sage Pay
+     * whether to complete the payment or not, and provide a URL to forward the customer to.
+     *
+     * Keep in mind your original confirmPurchase() script is being called by Sage Pay, not
+     * the customer.
+     *
+     * @param string The status to send to Sage Pay, either OK, INVALID or ERROR.
+     * @param string URL to forward the customer to. Note this is different to your standard
+     *               return controller action URL.
+     * @param string Optional human readable reasons for accepting the transaction.
+     */
+    public function sendResponse($status, $nextUrl, $detail = null)
+    {
+        $message = "Status=$status\r\nRedirectUrl=$nextUrl";
+
+        if (null !== $detail) {
+            $message .= "\r\nStatusDetail=".$detail;
+        }
+
+        echo $message;
+        exit;
     }
 }
