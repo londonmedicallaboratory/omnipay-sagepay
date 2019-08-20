@@ -43,6 +43,8 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
      */
     protected function getBasePurchaseData()
     {
+        $card = $this->getCard();
+
         $data = $this->getBaseData();
 
         $data['transactionType'] = $this->getTxType();
@@ -50,18 +52,17 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
         
         $data['description'] = $this->getDescription();
 
-        $data['amount'] = (int) $this->getAmount() * 100;
+        $data['amount'] = (int) $this->getAmount();
         $data['currency'] = $this->getCurrency();
-        $data['customerFirstName'] = 'Test';
-        $data['customerLastName'] = 'Test';
-        $data['billingAddress']['address1'] = '88 abc';
-        $data['billingAddress']['city'] = 'abc';
-        $data['billingAddress']['postalCode'] = '412';
-        $data['billingAddress']['country'] = 'GB';
+        $data['customerFirstName'] = $card->getBillingFirstName();
+        $data['customerLastName'] = $card->getBillingLastName();
+        $data['billingAddress']['address1'] = $card->getBillingAddress1();
+        $data['billingAddress']['city'] = $card->getBillingCity();
+        $data['billingAddress']['postalCode'] = $card->getBillingPostcode();
+        $data['billingAddress']['country'] = $card->getBillingCountry();
+
         $data['NotificationURL'] = $this->getNotifyUrl() ?: $this->getReturnUrl();
         $data['MD'] = $this->getMd();
-
-
 
         // $data = $this->getBillingAddressData($data);
 
