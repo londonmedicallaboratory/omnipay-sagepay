@@ -49,41 +49,14 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
 
         $data['transactionType'] = $this->getTxType();
         $data['vendorTxCode'] = $this->getTransactionId();
-        
         $data['description'] = $this->getDescription();
-
         $data['amount'] = (int) $this->getAmount();
         $data['currency'] = $this->getCurrency();
-        $data['customerFirstName'] = $card->getFirstName();
-        $data['customerLastName'] = $card->getLastName();
-        
-        $data['billingAddress']['address1'] = $card->getBillingAddress1();
-        $data['billingAddress']['address2'] = $card->getBillingAddress2();
-        $data['billingAddress']['city'] = $card->getBillingCity();
-        $data['billingAddress']['postalCode'] = $card->getBillingPostcode();
-        $data['billingAddress']['state'] = $card->getBillingState();
-        $data['billingAddress']['country'] = $card->getBillingCountry();
-
-
-        $data['shippingDetails']['recipientFirstName'] = $card->getShippingFirstName();
-        $data['shippingDetails']['recipientLastName'] = $card->getShippingLastName();
-        $data['shippingDetails']['shippingAddress1'] = $card->getShippingAddress1();
-        $data['shippingDetails']['shippingAddress2'] = $card->getShippingAddress2();
-        $data['shippingDetails']['shippingCity'] = $card->getShippingCity();
-        $data['shippingDetails']['shippingPostalCode'] = $card->getShippingPostcode();
-        $data['shippingDetails']['shippingState'] = $card->getShippingState();
-        $data['shippingDetails']['shippingCountry'] = $card->getShippingCountry();
-
         $data['NotificationURL'] = $this->getNotifyUrl() ?: $this->getReturnUrl();
         $data['MD'] = $this->getMd();
 
-        // $data = $this->getBillingAddressData($data);
-
-        // Shipping details
-
-        // $data = $this->getDeliveryAddressData($data);
-
-        // $card = $this->getCard();
+        $data = $this->getBillingAddressData($data);
+        $data = $this->getShippingDetailsData($data);
 
         if ($card->getEmail()) {
             $data['customerEmail'] = $card->getEmail();
@@ -105,9 +78,8 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
     }
 
     /**
-     * A card token is returned if one has been requested.
-     *
-     * @return string Currently an md5 format token.
+     * @param array $data
+     * @return array $data.
      */
     public function getPaymentMethodData($data = [])
     {

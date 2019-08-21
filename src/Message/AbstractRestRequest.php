@@ -192,6 +192,58 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
     }
 
     /**
+     * Add the billing address details to the data.
+     *
+     * @param array $data
+     * @return array $data
+     */
+    protected function getBillingAddressData(array $data = [])
+    {
+        $card = $this->getCard();
+
+        $data['customerFirstName'] = $card->getFirstName();
+        $data['customerLastName'] = $card->getLastName();
+        $data['billingAddress']['address1'] = $card->getBillingAddress1();
+        $data['billingAddress']['address2'] = $card->getBillingAddress2();
+        $data['billingAddress']['city'] = $card->getBillingCity();
+        $data['billingAddress']['postalCode'] = $card->getBillingPostcode();
+        $data['billingAddress']['state'] = $card->getBillingState();
+        $data['billingAddress']['country'] = $card->getBillingCountry();
+
+        if ($data['billingAddress']['country'] !== 'US') {
+            $data['billingAddress']['state'] = '';
+        }
+
+        return $data;
+    }
+
+    /**
+     * Add the shipping details to the data.
+     *
+     * @param array $data
+     * @return array $data
+     */
+    protected function getShippingDetailsData(array $data = [])
+    {
+        $card = $this->getCard();
+
+        $data['shippingDetails']['recipientFirstName'] = $card->getShippingFirstName();
+        $data['shippingDetails']['recipientLastName'] = $card->getShippingLastName();
+        $data['shippingDetails']['shippingAddress1'] = $card->getShippingAddress1();
+        $data['shippingDetails']['shippingAddress2'] = $card->getShippingAddress2();
+        $data['shippingDetails']['shippingCity'] = $card->getShippingCity();
+        $data['shippingDetails']['shippingPostalCode'] = $card->getShippingPostcode();
+        $data['shippingDetails']['shippingState'] = $card->getShippingState();
+        $data['shippingDetails']['shippingCountry'] = $card->getShippingCountry();
+
+        if ($data['shippingDetails']['shippingCountry'] !== 'US') {
+            $data['shippingDetails']['shippingState'] = '';
+        }
+
+        return $data;
+    }
+
+    /**
      * The payload consists of json.
      *
      * @param ResponseInterface $httpResponse
