@@ -67,12 +67,12 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
 
         $data['shippingDetails']['recipientFirstName'] = $card->getShippingFirstName();
         $data['shippingDetails']['recipientLastName'] = $card->getShippingLastName();
-        $data['shippingDetails']['address1'] = $card->getShippingAddress1();
-        $data['shippingDetails']['address2'] = $card->getShippingAddress2();
-        $data['shippingDetails']['city'] = $card->getShippingCity();
-        $data['shippingDetails']['postalCode'] = $card->getShippingPostcode();
-        $data['shippingDetails']['state'] = $card->getShippingState();
-        $data['shippingDetails']['country'] = $card->getShippingCountry();
+        $data['shippingDetails']['shippingAddress1'] = $card->getShippingAddress1();
+        $data['shippingDetails']['shippingAddress2'] = $card->getShippingAddress2();
+        $data['shippingDetails']['shippingCity'] = $card->getShippingCity();
+        $data['shippingDetails']['shippingPostalCode'] = $card->getShippingPostcode();
+        $data['shippingDetails']['shippingState'] = $card->getShippingState();
+        $data['shippingDetails']['shippingCountry'] = $card->getShippingCountry();
 
         $data['NotificationURL'] = $this->getNotifyUrl() ?: $this->getReturnUrl();
         $data['MD'] = $this->getMd();
