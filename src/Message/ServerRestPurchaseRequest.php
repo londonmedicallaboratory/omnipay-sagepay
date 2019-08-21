@@ -54,12 +54,25 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
 
         $data['amount'] = (int) $this->getAmount();
         $data['currency'] = $this->getCurrency();
-        $data['customerFirstName'] = $card->getBillingFirstName();
-        $data['customerLastName'] = $card->getBillingLastName();
+        $data['customerFirstName'] = $card->getFirstName();
+        $data['customerLastName'] = $card->getLastName();
+        
         $data['billingAddress']['address1'] = $card->getBillingAddress1();
+        $data['billingAddress']['address2'] = $card->getBillingAddress2();
         $data['billingAddress']['city'] = $card->getBillingCity();
         $data['billingAddress']['postalCode'] = $card->getBillingPostcode();
+        $data['billingAddress']['state'] = $card->getBillingState();
         $data['billingAddress']['country'] = $card->getBillingCountry();
+
+
+        $data['shippingDetails']['recipientFirstName'] = $card->getShippingFirstName();
+        $data['shippingDetails']['recipientLastName'] = $card->getShippingLastName();
+        $data['shippingDetails']['address1'] = $card->getShippingAddress1();
+        $data['shippingDetails']['address2'] = $card->getShippingAddress2();
+        $data['shippingDetails']['city'] = $card->getShippingCity();
+        $data['shippingDetails']['postalCode'] = $card->getShippingPostcode();
+        $data['shippingDetails']['state'] = $card->getShippingState();
+        $data['shippingDetails']['country'] = $card->getShippingCountry();
 
         $data['NotificationURL'] = $this->getNotifyUrl() ?: $this->getReturnUrl();
         $data['MD'] = $this->getMd();
@@ -72,9 +85,9 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
 
         // $card = $this->getCard();
 
-        // if ($card->getEmail()) {
-        //     $data['CustomerEMail'] = $card->getEmail();
-        // }
+        if ($card->getEmail()) {
+            $data['customerEmail'] = $card->getEmail();
+        }
 
         // $data['ApplyAVSCV2'] = $this->getApplyAVSCV2() ?: static::APPLY_AVSCV2_DEFAULT;
         // $data['apply3DSecure'] = $this->getApply3DSecure() ?: static::APPLY_3DSECURE_APPLY;
