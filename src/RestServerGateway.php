@@ -7,6 +7,7 @@ use Omnipay\SagePay\Message\ServerRestMerchantSessionKeyRequest;
 use Omnipay\SagePay\Message\ServerRestPurchaseRequest;
 use Omnipay\SagePay\Message\ServerRestRefundRequest;
 use Omnipay\SagePay\Message\ServerRestRetrieveTransactionRequest;
+use Omnipay\SagePay\Message\ServerRestVoidRequest;
 
 /**
  * Sage Pay Rest Server Gateway
