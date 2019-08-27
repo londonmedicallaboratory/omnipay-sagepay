@@ -38,7 +38,6 @@ class ServerRestRefundRequest extends AbstractRestRequest
         $data['currency'] = $this->getCurrency();
         $data['referenceTransactionId'] = $this->getReferenceTransactionId();
 
-
         return $data;
     }
 
@@ -49,17 +48,6 @@ class ServerRestRefundRequest extends AbstractRestRequest
     protected function createResponse($data)
     {
         return $this->response = new ServerRestRefundRequest($this, $data);
-    }
-
-    /**
-     * @param array $data
-     * @return array $data.
-     */
-    public function getPaymentMethodData($data = [])
-    {
-        $data['paymentMethod']['card']['merchantSessionKey'] = $this->getMerchantSessionKey();
-        $data['paymentMethod']['card']['cardIdentifier'] = $this->getCardIdentifier();
-        return $data;
     }
 
     public function getReferenceTransactionId()
