@@ -2,7 +2,7 @@
 
 namespace Omnipay\SagePay\Message;
 
-use Omnipay\SagePay\Message\ServerRestRefundRequest;
+use Omnipay\SagePay\Message\ServerRestRefundResponse;
 
 /**
  * Sage Pay REST Server Refund Request
@@ -47,7 +47,7 @@ class ServerRestRefundRequest extends AbstractRestRequest
      */
     protected function createResponse($data)
     {
-        return $this->response = new ServerRestRefundRequest($this, $data);
+        return $this->response = new ServerRestRefundResponse($this, $data);
     }
 
     public function getReferenceTransactionId()
