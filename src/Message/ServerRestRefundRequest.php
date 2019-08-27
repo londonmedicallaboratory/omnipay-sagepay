@@ -54,4 +54,9 @@ class ServerRestRefundRequest extends AbstractRestRequest
     {
         return $this->getParameter('referenceTransactionId');
     }
+
+    public function setReferenceTransactionId($value)
+    {
+        return $this->setParameter('referenceTransactionId', $value);
+    }
 }
