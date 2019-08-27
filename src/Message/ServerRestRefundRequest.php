@@ -27,7 +27,7 @@ class ServerRestRefundRequest extends AbstractRestRequest
      *
      * @return array
      */
-    protected function getData()
+    public function getData()
     {
         $data = $this->getBaseData();
 
