@@ -80,7 +80,15 @@ class RestServerGateway extends ServerGateway
     }
 
     /**
-     * Refund request.
+     * Repeat request.
+     */
+    public function repeat(array $parameters = array())
+    {
+        return $this->createRequest(ServerRestRepeatRequest::class, $parameters);
+    }
+
+    /**
+     * Void request.
      */
     public function void(array $parameters = array())
     {
