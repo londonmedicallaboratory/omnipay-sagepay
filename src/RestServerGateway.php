@@ -6,6 +6,7 @@ use Omnipay\SagePay\Message\ServerRestCompletePurchaseRequest;
 use Omnipay\SagePay\Message\ServerRestMerchantSessionKeyRequest;
 use Omnipay\SagePay\Message\ServerRestPurchaseRequest;
 use Omnipay\SagePay\Message\ServerRestRefundRequest;
+use Omnipay\SagePay\Message\ServerRestRepeatRequest;
 use Omnipay\SagePay\Message\ServerRestRetrieveTransactionRequest;
 use Omnipay\SagePay\Message\ServerRestVoidRequest;
 

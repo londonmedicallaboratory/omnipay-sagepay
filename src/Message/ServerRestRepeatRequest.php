@@ -2,6 +2,8 @@
 
 namespace Omnipay\SagePay\Message;
 
+use Omnipay\SagePay\Message\ServerRestRepeatResponse;
+
 /**
  * Sage Pay REST Server Repeat Request
  */
