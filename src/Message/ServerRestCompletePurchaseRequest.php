@@ -16,7 +16,7 @@ class ServerRestCompletePurchaseRequest extends AbstractRestRequest
 
     public function getParentService()
     {
-        return static::SERVICE_REST_PURCHASE;
+        return static::SERVICE_REST_TRANSACTIONS;
     }
 
     public function getParentServiceReference()

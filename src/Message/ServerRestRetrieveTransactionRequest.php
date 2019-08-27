@@ -11,7 +11,7 @@ class ServerRestRetrieveTransactionRequest extends AbstractRestRequest
 
     public function getService()
     {
-        return static::SERVICE_REST_PURCHASE. '/'.$this->getParameter('transactionId'); // temporary
+        return static::SERVICE_REST_TRANSACTIONS. '/'.$this->getParameter('transactionId'); // temporary
     }
 
     /**

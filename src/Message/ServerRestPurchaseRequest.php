@@ -9,7 +9,7 @@ class ServerRestPurchaseRequest extends AbstractRestRequest
 {
     public function getService()
     {
-        return static::SERVICE_REST_PURCHASE;
+        return static::SERVICE_REST_TRANSACTIONS;
     }
     
     /**
