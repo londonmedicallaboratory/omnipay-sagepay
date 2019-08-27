@@ -117,6 +117,7 @@ interface ConstantsInterface
     const SERVICE_DIRECT3D          = 'direct3dcallback';
     const SERVICE_REST_MSK          = 'merchant-session-keys';
     const SERVICE_REST_TRANSACTIONS = 'transactions';
+    const SERVICE_REST_INSTRUCTIONS = 'instructions';
     const SERVICE_REST_3D           = '3d-secure';
 
     /**

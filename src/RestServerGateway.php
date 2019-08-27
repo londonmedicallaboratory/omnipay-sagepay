@@ -77,4 +77,12 @@ class RestServerGateway extends ServerGateway
     {
         return $this->createRequest(ServerRestRefundRequest::class, $parameters);
     }
+
+    /**
+     * Refund request.
+     */
+    public function void(array $parameters = array())
+    {
+        return $this->createRequest(ServerRestVoidRequest::class, $parameters);
+    }
 }
