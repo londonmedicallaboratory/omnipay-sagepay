@@ -2,6 +2,7 @@
 
 namespace Omnipay\SagePay\Message;
 
+use Omnipay\SagePay\Message\ServerRestInstructionResponse;
 use Omnipay\SagePay\Message\ServerRestRefundResponse;
 
 /**
@@ -43,5 +44,14 @@ class ServerRestVoidRequest extends AbstractRestRequest
     public function getParentServiceReference()
     {
         return $this->getParameter('transactionId');
+    }
+    
+    /**
+     * @param array $data
+     * @return ServerRestInstructionResponse
+     */
+    protected function createResponse($data)
+    {
+        return $this->response = new ServerRestInstructionResponse($this, $data);
     }
 }
