@@ -27,23 +27,7 @@ class ServerRestRefundRequest extends AbstractRestRequest
      *
      * @return array
      */
-    public function getData()
-    {
-        $data = $this->getBasePurchaseData();
-
-        if ($this->getCardIdentifier() && $this->getMerchantSessionKey()) {
-            $data = $this->getPaymentMethodData($data);
-        }
-
-        return $data;
-    }
-
-    /**
-     * The required fields concerning the purchase
-     *
-     * @return array
-     */
-    protected function getBasePurchaseData()
+    protected function getData()
     {
         $data = $this->getBaseData();
 
@@ -52,19 +36,9 @@ class ServerRestRefundRequest extends AbstractRestRequest
         $data['description'] = $this->getDescription();
         $data['amount'] = (int) $this->getAmount();
         $data['currency'] = $this->getCurrency();
-        $data['NotificationURL'] = $this->getNotifyUrl() ?: $this->getReturnUrl();
-        $data['MD'] = $this->getMd();
+        $data['referenceTransactionId'] = $this->getReferenceTransactionId();
 
-        $data = $this->getBillingAddressData($data);
-        $data = $this->getShippingDetailsData($data);
 
-        if ($card->getEmail()) {
-            $data['customerEmail'] = $card->getEmail();
-        }
-
-        // $data['ApplyAVSCV2'] = $this->getApplyAVSCV2() ?: static::APPLY_AVSCV2_DEFAULT;
-        // $data['apply3DSecure'] = $this->getApply3DSecure() ?: static::APPLY_3DSECURE_APPLY;
-        // user parent data here and the abstract can provide txtype vendor etc
         return $data;
     }
 
@@ -86,5 +60,10 @@ class ServerRestRefundRequest extends AbstractRestRequest
         $data['paymentMethod']['card']['merchantSessionKey'] = $this->getMerchantSessionKey();
         $data['paymentMethod']['card']['cardIdentifier'] = $this->getCardIdentifier();
         return $data;
+    }
+
+    public function getReferenceTransactionId()
+    {
+        return $this->getParameter('referenceTransactionId');
     }
 }
