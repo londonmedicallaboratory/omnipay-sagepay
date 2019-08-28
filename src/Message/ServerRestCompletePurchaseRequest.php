@@ -3,6 +3,7 @@
 namespace Omnipay\SagePay\Message;
 
 use Omnipay\Common\Exception\InvalidResponseException;
+use Omnipay\SagePay\Message\ServerRestCompleteResponse;
 
 /**
  * Sage Pay REST Complete Purchase Request.
@@ -75,5 +76,14 @@ class ServerRestCompletePurchaseRequest extends AbstractRestRequest
     public function setPaRes($value)
     {
         return $this->setParameter('paRes', $value);
+    }
+
+    /**
+     * @param array $data
+     * @return ServerRestCompleteResponse
+     */
+    protected function createResponse($data)
+    {
+        return $this->response = new ServerRestCompleteResponse($this, $data);
     }
 }
