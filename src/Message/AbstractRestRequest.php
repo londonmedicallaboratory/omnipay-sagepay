@@ -30,7 +30,7 @@ abstract class AbstractRestRequest extends AbstractRequest implements ConstantsI
     /**
      * @var string Endpoint base URLs.
      */
-    protected $liveEndpoint = 'https://pi-test.sagepay.com/api';
+    protected $liveEndpoint = 'https://pi-live.sagepay.com/api';
     protected $testEndpoint = 'https://pi-test.sagepay.com/api';
 
     public function getMethod()
