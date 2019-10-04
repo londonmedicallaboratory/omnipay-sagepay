@@ -97,8 +97,29 @@ class RestResponse extends AbstractResponse implements RedirectResponseInterface
      * A secret used to sign the notification request sent direct to your
      * application.
      */
+    public function getErrors()
+    {
+        return $this->getDataItem('errors');
+    }
+
+    public function getError()
+    {
+        if (!empty($this->getErrors())) {
+            return array_values($this->getErrors())[0];
+        }
+        return null;
+    }
+
+    /**
+     * A secret used to sign the notification request sent direct to your
+     * application.
+     */
     public function getErrorCode()
     {
+        if ($this->getError()) {
+            $error = $this->getError();
+            return $error['code'] ?? null;
+        }
         return $this->getDataItem('code');
     }
 
@@ -108,6 +129,10 @@ class RestResponse extends AbstractResponse implements RedirectResponseInterface
      */
     public function getErrorDescription()
     {
+        if ($this->getError()) {
+            $error = $this->getError();
+            return $error['description'] ?? null;
+        }
         return $this->getDataItem('description');
     }
 }
