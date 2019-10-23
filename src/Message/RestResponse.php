@@ -120,7 +120,7 @@ class RestResponse extends AbstractResponse implements RedirectResponseInterface
             $error = $this->getError();
             return $error['code'] ?? null;
         }
-        return $this->getDataItem('code');
+        return $this->getCode();
     }
 
     /**
@@ -133,6 +133,6 @@ class RestResponse extends AbstractResponse implements RedirectResponseInterface
             $error = $this->getError();
             return $error['description'] ?? null;
         }
-        return $this->getDataItem('description');
+        return $this->getMessage();
     }
 }
