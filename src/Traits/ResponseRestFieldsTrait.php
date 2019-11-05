@@ -72,6 +72,16 @@ trait ResponseRestFieldsTrait
      */
     public function getCode()
     {
+        return $this->getStatusCode() ?? $this->getDataItem('code') ?? 'No Code';
+    }
+
+    /**
+     * The raw status code.
+     *
+     * @return string One of static::SAGEPAY_STATUS_*
+     */
+    public function getStatusCode()
+    {
         return $this->getDataItem('statusCode');
     }
 
@@ -81,6 +91,16 @@ trait ResponseRestFieldsTrait
      * @return string A response message from the payment gateway
      */
     public function getMessage()
+    {
+        return $this->getStatusDetail() ?? $this->getDataItem('description');
+    }
+
+    /**
+     * Response Textual Message
+     *
+     * @return string A response message from the payment gateway
+     */
+    public function getStatusDetail()
     {
         return $this->getDataItem('statusDetail');
     }
